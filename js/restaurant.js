@@ -513,7 +513,13 @@ function sendEvent(category, action, label){
 }
 
 function winGame(){
-  $(".table").html('<span class="winner"><strong>You did it!</strong><br>You rock at CSS.</span>');
+  $(".table").html('<span class="winner"><strong>You did it!</strong><br>You rock at CSS.</span><br><span id="code"></span>');
+  var name = prompt("Please enter your WashU Email: ", "");
+  if (name != null) {
+      var md = forge.md.md5.create();
+      md.update('this is a secret ' + name);
+      alert('Here is your secret code to submit with your assignment: '+md.digest().toHex());
+  }
   addNametags();
   finished = true;
   resetTable();
